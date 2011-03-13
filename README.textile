@@ -1,0 +1,5 @@
+h1. Sidro
+
+Create default views for the inherited_resources 
+
+bc. rails g sidro:install

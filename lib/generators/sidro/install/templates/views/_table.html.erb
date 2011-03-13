@@ -1,0 +1,23 @@
+<table class="table">
+  <tr>             
+    <th class="first"><%= check_box_tag "all_ids" %></th>
+    <% for c in resource_class.columns %>
+      <th><%= c.human_name %></th>
+    <% end %>
+    <th class="last">&nbsp;</th>
+  </tr>
+  <% collection.each do |record| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= check_box_tag "ids[]", record.id %></td>
+      <% for column_name in resource_class.column_names %>
+        <td><%= record.send( column_name.sub(/_id/, '') ) %></td>
+      <% end %>
+      <td class="last">
+        <%= link_to "#{t("web-app-theme.show", :default => "Show")}", resource_path(record) %> |
+        <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_resource_path(record) %> |
+        <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", resource_path(record),
+          :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </td>
+    </tr>          
+  <% end -%>
+</table>
