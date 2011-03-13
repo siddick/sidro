@@ -2,4 +2,15 @@ h1. Sidro
 
 Create default views for the inherited_resources 
 
+Install:
+
 bc. rails g sidro:install
+
+Now create inherited_resources:
+
+bc. rails g scaffold blog title:string content:text 
+rake db:migrate
+rails s
+
+
+
